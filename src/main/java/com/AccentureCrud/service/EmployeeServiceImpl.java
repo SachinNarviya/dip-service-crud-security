@@ -9,15 +9,25 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
-    EmployeeCrudRepo employeeRepository;
+    private EmployeeCrudRepo crudRepo;
 
     @Override
     public List<Employee> getAllEmployee() {
-        return employeeRepository.findAll();
+        return crudRepo.findAll();
     }
 
     @Override
     public Employee getEmployeeById(Long id) {
-        return employeeRepository.findById(id).orElse(null);
+        return crudRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public Employee addEmployee(Employee employee) {
+        return crudRepo.save(employee);
+    }
+
+    @Override
+    public void deleteEmployee(Long empId) {
+         crudRepo.deleteById(empId);
     }
 }
