@@ -37,8 +37,8 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
     @PutMapping("/updateEmployee")
-    public ResponseEntity<?> updateEmployee(@RequestBody Employee employee) {
-        var savedEmp = employeeService.addEmployee(employee);
+    public ResponseEntity<?> updateEmployee(@RequestBody Employee emp) {
+        var savedEmp = employeeService.addEmployee(emp);
         return new ResponseEntity<>(savedEmp, HttpStatus.OK);
     }
 }
